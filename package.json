@@ -11,17 +11,20 @@
   },
   "dependencies": {
     "@types/node": "^25.0.3",
-    "fastify": "^5.6.2"
+    "fastify": "^5.6.2",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
   },
   "name": "02-api-rest-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "knex": "node --loader tsx ./node_modules/.bin/knex"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "module"
 }
