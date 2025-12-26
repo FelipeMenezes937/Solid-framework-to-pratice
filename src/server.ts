@@ -1,10 +1,10 @@
 import fastify from "fastify"
-import { knex } from "./database.js"
+import { db } from "./database.js"
 
 const app = fastify()
 
 app.get('/hello', async () => {
-    const tables = await knex('sqlite_schema').select('*')// sqlite_schema é uma tabela universal, usada em todo banco sqlite
+    const tables = await db('sqlite_schema').select('*')// sqlite_schema é uma tabela universal, usada em todo banco sqlite
     return tables
 })
 
