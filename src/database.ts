@@ -1,4 +1,5 @@
 import setupKnex from "knex"
+
 export const config = {
     client: 'sqlite',
     connection: {
