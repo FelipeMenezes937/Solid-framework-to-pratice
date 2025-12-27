@@ -11,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {// metodo "up especifica oq
 }
 
 
-export async function down(knex: Knex): Promise<void> {
+export async function down(knex: Knex): Promise<void> {// metodo usado para voltar, limpar o banco, fazer um rollback
     await knex.schema.dropTable('transactions')
 }
 
