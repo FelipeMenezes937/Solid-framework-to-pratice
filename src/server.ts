@@ -1,11 +1,22 @@
 import fastify from "fastify"
+// import knex from "knex"
+import crypto from 'node:crypto'
 import { db } from "./database.js"
+
 
 const app = fastify()
 
 app.get('/hello', async () => {
-    const tables = await db('sqlite_schema').select('*')// sqlite_schema é uma tabela universal, usada em todo banco sqlite
-    return tables
+
+ const transactions =  await db('transactions').insert({
+  id: crypto.randomUUID(),
+  title: 'transacao de teste',
+  amount: 1000,
+  created_at: new Date()
+})
+console.log('deu certo')
+    return transactions
+    
 })
 
 app.listen({

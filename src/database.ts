@@ -2,7 +2,7 @@ import knex from 'knex'
 import type { Knex } from 'knex'
 
 export const config: Knex.Config = {
-  client: 'sqlite3',
+  client: 'sqlite',
   connection: {
     filename: './db/app.db',
   },
