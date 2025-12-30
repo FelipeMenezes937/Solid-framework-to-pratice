@@ -8,7 +8,9 @@ import { transactionsRoutes } from "../routes/transactions.js"
 
 const app = fastify()
 
-app.register(transactionsRoutes)// register seria como um import
+app.register(transactionsRoutes, {
+    prefix: 'transactions',
+})// register seria como um import
 
 app.listen({
         port: env.PORT,
