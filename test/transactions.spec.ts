@@ -1,8 +1,10 @@
 import request from "supertest"
-import { afterAll, beforeAll, expect, it, describe } from 'vitest'
+import { afterAll, beforeAll, expect, it, describe, beforeEach } from 'vitest'
+import { execSync } from 'node:child_process'
 import { app } from '../src/app.js';
 import { id } from "zod/locales";
 import { string } from "zod";
+
 
 describe('Transactions routes', () => {
 
@@ -13,6 +15,12 @@ describe('Transactions routes', () => {
     afterAll(async () => {
         await app.close()
     })
+
+    beforeEach(async () => {
+        // apagando o banco toda vez que um teste é rodado
+        execSync('npm run knex migrate:rollback --al')
+        execSync('npm run knex migrate:latest') // roda comandos terminal
+    } )
 
     it('should be able to create a new transaction', async () => {
         const response = await request(app.server)
@@ -55,5 +63,7 @@ describe('Transactions routes', () => {
             })
         ])
     })
+
+    
     
 })
