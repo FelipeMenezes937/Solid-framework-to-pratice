@@ -9,6 +9,10 @@ const app = fastify()
 
 app.register(cookie)
 
+    // PreHandler executado em todas as rotas do contexto do 
+    app.addHook('preHandler', async (request) => {
+        console.log(`método: ${request.method} | caminho: ${request.url}`)
+    })
 
 app.register(transactionsRoutes, {
     prefix: 'transactions',

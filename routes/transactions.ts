@@ -5,11 +5,15 @@ import { z } from "zod";
 import { request } from "node:https";
 import { error } from "node:console";
 import { checkSessionIdExists } from "../src/middlewares/check-session-id-exists.js";
-let knex = db;
+let knex = db; 
 
 // todo plugin do fastify necessariamente é uma funcao assíncrona
 export function transactionsRoutes(app: FastifyInstance){
     
+
+
+
+
     app.get('/', {
         preHandler: [checkSessionIdExists],// colocando o midleware de verificacao antes da execucao da rota, no PreHandler
     },async(request, reply) =>{
