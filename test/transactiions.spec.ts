@@ -1,6 +1,8 @@
 import request from "supertest"
-import { afterAll, beforeAll, it, describe } from 'vitest'
+import { afterAll, beforeAll, expect, it, describe } from 'vitest'
 import { app } from '../src/app.js';
+import { id } from "zod/locales";
+import { string } from "zod";
 
 describe('Transactions routes', () => {
 
@@ -39,13 +41,19 @@ describe('Transactions routes', () => {
         })
         
         const cookies = createTransaction.get('Set-Cookie')
-        console.log(cookies)
-        await request(app.server)
+    
+
+        const listTransactionsReponse = await request(app.server)
         .get('/transactions')
         .set('Cookie', cookies)
         .expect(200)
 
-        
+        expect(listTransactionsReponse.body.transactions).toEqual([
+            expect.objectContaining({
+                title: 'New Transaction',
+                amount: 5000,
+            })
+        ])
     })
     
 })
