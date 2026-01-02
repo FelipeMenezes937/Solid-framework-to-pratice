@@ -51,12 +51,12 @@ describe('Transactions routes', () => {
         const cookies = createTransaction.get('Set-Cookie')
     
 
-        const listTransactionsReponse = await request(app.server)
+        const listTransactionsResponse = await request(app.server)
         .get('/transactions')
         .set('Cookie', cookies)
         .expect(200)
 
-        expect(listTransactionsReponse.body.transactions).toEqual([
+        expect(listTransactionsResponse.body.transactions).toEqual([
             expect.objectContaining({
                 title: 'New Transaction',
                 amount: 5000,
