@@ -11,7 +11,9 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.50.1",
-    "engines":{"node":">=22.9.0"},
+    "engines": {
+  "node": ">=22.9.0"
+},
     "vitest": "^4.0.16"
   },
   "dependencies": {
@@ -28,12 +30,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "knex": "node --no-warnings --import tsx ./node_modules/knex/bin/cli.js",
-    "test": "vitest",
-    "build": "tsup src --out-dir build"
-  },
+ "scripts": {
+  "dev": "tsx watch src/server.ts",
+  "knex": "knex",
+  "build": "tsup src --out-dir build",
+  "start": "node build/server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
