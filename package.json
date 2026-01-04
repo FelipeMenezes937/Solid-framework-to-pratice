@@ -31,7 +31,7 @@
   "dev": "tsx watch src/server.ts",
   "knex:migrate": "knex migrate:latest",
   "build": "tsup src --out-dir build",
-  "start": "node build/server.js"
+  "start": "node build/server.cjs"
 },
   "keywords": [],
   "author": "",
